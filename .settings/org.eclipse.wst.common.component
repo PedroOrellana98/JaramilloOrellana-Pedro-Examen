@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="JaramilloOrellana-Pedro-Examen">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="JaramilloOrellana-Pedro-Examen"/>
+        <property name="java-output-path" value="/JaramilloOrellana-Pedro-Examen/build/classes"/>
+    </wb-module>
+</project-modules>
