@@ -17,6 +17,12 @@ public interface GenericDAO<T, ID> {
 	public void deleteByID(ID id);
 	
 	List<T> findAll();
+
+	Usuario buscar(String correo, String clave);
+
+	List<Telefono> buscarCedula(String cedula);
+
+	List<Usuario> buscarCorreo(String correo);
 	
 	
 }
