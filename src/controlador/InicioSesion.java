@@ -17,14 +17,14 @@ import entidad.Usuario;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/InicioSesion")
+public class InicioSesion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public InicioSesion() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -48,12 +48,22 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html:charset=UTF-8");
+
+		String url = null;
+
 		HttpSession sesion = request.getSession(true);
-		
+
 		sesion.setAttribute("accesos", sesion.getId());
-		System.out.println("Inicio de sesion: "+ sesion.getId());
-		
-		getServletContext().getRequestDispatcher("JSPs/Login.jsp").forward(request, response);
+
+			try {
+				url="JSPs/Login.jsp";
+			} catch (Exception e) {
+				url="index.jsp";
+				System.out.println("Error en el login: " + e.getMessage());
+			}
+			request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	/**
@@ -65,7 +75,6 @@ public class Login extends HttpServlet {
 		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
-		System.out.print("Iniciar Sesion \n");
 
 		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
 		String correo = "";
@@ -84,9 +93,9 @@ public class Login extends HttpServlet {
 				TelefonoDAO telefonoDao = DAOFactory.getFactory().getTelefonoDAO();
 				request.setAttribute("telefono", telefonoDao.buscarCedula(user.getCedula()));
 				request.setAttribute("usuario", user);
-				getServletContext().getRequestDispatcher("/JSPs/IndexUsuario.jsp").forward(request, response);
+				request.getRequestDispatcher("JSPs/CrearUsuario.jsp").forward(request, response);
 			} else {
-				getServletContext().getRequestDispatcher("/JSps/login.jsp").forward(request, response);
+				request.getRequestDispatcher("/JSPs/login.jsp").forward(request, response);
 			}
 		}catch (Exception e) {
 			System.out.println(">>>ERROR:IniciarSesion:DOPOST "+e.getMessage());

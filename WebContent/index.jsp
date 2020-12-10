@@ -16,8 +16,8 @@
 		<div>Bienvenido<span></span></div><br>	
 	</div>
 	<div class="login">
-			<h1><form action="login" method="GET">
-				<a href="login">InicioSesion</a>
+			<h1><form action="InicioSesion" method="GET">
+				<a href="InicioSesion">InicioSesion</a>
 		</form></h1>
 			<h1><form action="Buscar" method="GET">
 				<a href="Buscar">Buscar</a>

@@ -9,7 +9,7 @@
 <title>Buscar</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="/JaramilloOrellana-Pedro-Examen/css/login.css" type="text/css">
+<link rel="stylesheet" href="/JaramilloOrellana-Pedro-Examen/css/buscar.css" type="text/css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -22,7 +22,7 @@
 		<h1>Buscar</h1>
 	</div>
 	<div class="topnav">
-		<a href="../index.jsp">Home</a>
+		<a href="index.jsp">Home</a>
 		<form action="/JaramilloOrellana-Pedro-Examen/Buscar?id=1" method="POST">
 			<a><input type="text" class="form-control" name="correo"></a>
 			<a><button class="input-group-text" name="buscarCorreo" value="correoB"
@@ -37,7 +37,6 @@
 	<table class="container">
 		<thead>
 			<tr>
-				<th>ID</th>
 				<th>Tipo</th>
 				<th>Operadora</th>
 				<th>Numero</th>
@@ -47,7 +46,6 @@
 		
 		<c:forEach var="te" items="${telefono}" varStatus="loop">
 			<tr>
-				<td>${te.codigo}</td>
             	<td>${te.tipo}</td>
             	<td>${te.operadora}</td>
             	<td>${te.numero}</td>
