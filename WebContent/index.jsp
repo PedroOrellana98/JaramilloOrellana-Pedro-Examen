@@ -16,8 +16,12 @@
 		<div>Bienvenido<span></span></div><br>	
 	</div>
 	<div class="login">
-			<h1><a href="JSPs/Login.jsp">Inicio de Sesion</a></h1>
-			<h1><a href="JSPs/Busqueda.jsp">Buscar</a></h1>
+			<h1><form action="login" method="GET">
+				<a href="login">InicioSesion</a>
+		</form></h1>
+			<h1><form action="Buscar" method="GET">
+				<a href="Buscar">Buscar</a>
+		</form></h1>
 	</div>
 </body>
 </html>

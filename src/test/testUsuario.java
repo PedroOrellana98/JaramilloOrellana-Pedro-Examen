@@ -30,8 +30,14 @@ public class testUsuario {
 		u3 = user.read("0104978135");
 		System.out.println(u3);
 		Telefono t1 = new Telefono("0998550859", "Celular", "Movistar", u1);
+		Telefono t2 = new Telefono("072256171", "Convencional", "CNT", u1);
+		Telefono t3 = new Telefono("0987404489", "Celular", "Claro", u2);
+		Telefono t4 = new Telefono("072255338", "Convencional", "CNT", u2);
 		
 		telf.create(t1);
+		telf.create(t2);
+		telf.create(t3);
+		telf.create(t4);
 		System.out.println("Telef creado");
 		
 		System.out.println(telf.buscarCedula("0104978135"));

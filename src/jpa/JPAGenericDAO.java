@@ -105,8 +105,7 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	
 	@Override
 	public List<Usuario> buscarCorreo(String correo) {
-		System.out.println("Entro en el proyecto");
-		Query nativeQuery = em.createNativeQuery("SELECT * FROM usuario, telefono WHERE telefono.Usuario_idUsuario=Usuario.idUsuario and usuario.correo= ?", Telefono.class);
+		Query nativeQuery = em.createNativeQuery("SELECT * FROM usuario, telefono WHERE telefono.Usuario_cedula=Usuario.cedula and usuario.correo= ?", Telefono.class);
 		 nativeQuery.setParameter(1, correo);
 		return (List<Usuario>) nativeQuery.getResultList();
 	
@@ -115,13 +114,17 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	@Override
 	public Usuario buscar(String correo, String clave) {
 		// TODO Auto-generated method stub
-		return null;
+		Query nativeQuery = em.createNativeQuery("SELECT * FROM usuario WHERE correo = ? AND clave =? ", Usuario.class);
+        nativeQuery.setParameter(1, correo);
+        nativeQuery.setParameter(2, clave);
+        return (Usuario) nativeQuery.getSingleResult();
 	}
 
 	@Override
 	public List<Telefono> buscarCedula(String cedula) {
-		// TODO Auto-generated method stub
-		return null;
+		Query nativeQuery = em.createNativeQuery("SELECT * FROM usuario, telefono WHERE telefono.Usuario_cedula=Usuario.cedula and usuario.cedula= ?", Telefono.class);
+		 nativeQuery.setParameter(1, cedula);
+		return (List<Telefono>)nativeQuery.getResultList();
 	}
 
 
