@@ -4,16 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
-public class Usuario implements Serializable{
+/**
+ * Entity implementation class for Entity: Usuario
+ *
+ */
+@Entity
+@Table(name = "Usuario")
+public class Usuario implements Serializable {
+
 	
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 	
 	@Id
-	private int codigo;
 	private String cedula;
 	private String nombre;
 	private String apellido;
@@ -26,9 +30,8 @@ public class Usuario implements Serializable{
 		
 	}
 	
-	public Usuario(int codigo, String cedula, String nombre, String apellido, String correo, String clave) {
+	public Usuario(String cedula, String nombre, String apellido, String correo, String clave) {
 		super();
-		this.codigo = codigo;
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -36,9 +39,8 @@ public class Usuario implements Serializable{
 		this.clave = clave;
 	}
 	
-	public Usuario(int codigo, String cedula, String nombre, String apellido, String correo, String clave, List<Telefono> telefonos) {
+	public Usuario(String cedula, String nombre, String apellido, String correo, String clave, List<Telefono> telefonos) {
 		super();
-		this.codigo = codigo;
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -46,15 +48,7 @@ public class Usuario implements Serializable{
 		this.clave = clave;
 		this.telefonos = telefonos;
 	}
-	
 
-	public int getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
 
 	public String getCedula() {
 		return cedula;
@@ -115,7 +109,6 @@ public class Usuario implements Serializable{
 		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
 		result = prime * result + ((cedula == null) ? 0 : cedula.hashCode());
 		result = prime * result + ((clave == null) ? 0 : clave.hashCode());
-		result = prime * result + codigo;
 		result = prime * result + ((correo == null) ? 0 : correo.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((telefonos == null) ? 0 : telefonos.hashCode());
@@ -146,8 +139,6 @@ public class Usuario implements Serializable{
 				return false;
 		} else if (!clave.equals(other.clave))
 			return false;
-		if (codigo != other.codigo)
-			return false;
 		if (correo == null) {
 			if (other.correo != null)
 				return false;
@@ -168,7 +159,8 @@ public class Usuario implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Usuario [codigo=" + codigo + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", correo=" + correo + ", clave=" + clave + ", telefonos=" + telefonos + "]";
+		return "Usuario [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo
+				+ ", clave=" + clave + ", telefonos=" + telefonos + "]";
 	}
+   
 }

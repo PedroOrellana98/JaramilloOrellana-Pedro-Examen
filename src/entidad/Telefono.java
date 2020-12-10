@@ -1,16 +1,21 @@
 package entidad;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+/**
+ * Entity implementation class for Entity: Telefono
+ *
+ */
+@Entity
+@Table(name = "Telefono")
+public class Telefono implements Serializable {
 
-public class Telefono implements Serializable{
-
-	private static final long serialVersionUID = 1L;
+	
+private static final long serialVersionUID = 1L;
 	
 	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 	private String numero;
 	private String tipo;
@@ -133,4 +138,6 @@ public class Telefono implements Serializable{
 		return "Telefono [codigo=" + codigo + ", numero=" + numero + ", tipo=" + tipo + ", operadora=" + operadora
 				+ ", usuario=" + usuario + "]";
 	}
+	
+	
 }

@@ -9,6 +9,6 @@ public class JPATelefonoDAO extends JPAGenericDAO<Telefono, String> implements T
 
 	public JPATelefonoDAO() {
 		super(Telefono.class);
-		this.em = Persistence.createEntityManagerFactory("JaramilloOrellana-Pedro-Examen").createEntityManager();
+		this.em = Persistence.createEntityManagerFactory("jpa").createEntityManager();
 	}
 }

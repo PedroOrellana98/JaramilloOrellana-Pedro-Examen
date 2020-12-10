@@ -17,7 +17,7 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	
 	public JPAGenericDAO(Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
-		this.em = Persistence.createEntityManagerFactory("JaramilloOrellana-Pedro-Examen").createEntityManager();
+		this.em = Persistence.createEntityManagerFactory("jpa").createEntityManager();
 	}
 
 	@Override
@@ -104,28 +104,24 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	}
 	
 	@Override
-	public Usuario buscar(String correo, String clave) {    
-			System.out.println("Entro en la consulta");
-		    Query nativeQuery = em.createNativeQuery("SELECT * FROM usuario WHERE correo = ? AND clave =? ", Usuario.class);
-	        nativeQuery.setParameter(1, correo);
-	        nativeQuery.setParameter(2, clave);
-	        return (Usuario) nativeQuery.getSingleResult();
-	}
-
-	@Override
-	public List<Telefono> buscarCedula(String cedula) {
-		System.out.println("Entro en la consulta");
-		Query nativeQuery = em.createNativeQuery("SELECT idTelefono, numero, tipo, operadora, Usuario_idUsuario FROM usuario, telefono WHERE telefono.Usuario_idUsuario=Usuario.idUsuario and usuario.cedula= ?", Telefono.class);
-		 nativeQuery.setParameter(1, cedula);
-		return (List<Telefono>)nativeQuery.getResultList();
-	}
-	
-	@Override
 	public List<Usuario> buscarCorreo(String correo) {
+		System.out.println("Entro en el proyecto");
 		Query nativeQuery = em.createNativeQuery("SELECT * FROM usuario, telefono WHERE telefono.Usuario_idUsuario=Usuario.idUsuario and usuario.correo= ?", Telefono.class);
 		 nativeQuery.setParameter(1, correo);
 		return (List<Usuario>) nativeQuery.getResultList();
 	
+	}
+
+	@Override
+	public Usuario buscar(String correo, String clave) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Telefono> buscarCedula(String cedula) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
