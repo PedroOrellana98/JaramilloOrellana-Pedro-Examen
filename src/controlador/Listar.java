@@ -11,22 +11,20 @@ import javax.servlet.http.HttpSession;
 import dao.DAOFactory;
 import dao.TelefonoDAO;
 import dao.UsuarioDAO;
-import entidad.Usuario;
+
 /**
- * Servlet implementation class BuscarPorCedula
+ * Servlet implementation class Listar
  */
-@WebServlet("/Buscar")
-public class Buscar extends HttpServlet {
+@WebServlet("/Listar")
+public class Listar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Buscar() {
+    public Listar() {
         super();
         // TODO Auto-generated constructor stub
-        
-        
     }
 
 	/**
@@ -39,8 +37,12 @@ public class Buscar extends HttpServlet {
 
 		String url = null;
 
+		HttpSession sesion = request.getSession(true);
+
+		sesion.setAttribute("accesos", sesion.getId());
+
 			try {
-				url="JSPs/Busqueda.jsp";
+				url="/JSPs/Listar.jsp";
 			} catch (Exception e) {
 				url="index.jsp";
 				System.out.println("Error en el login: " + e.getMessage());
@@ -52,31 +54,16 @@ public class Buscar extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
 		
 		TelefonoDAO telefonoDao = DAOFactory.getFactory().getTelefonoDAO();
-		HttpSession sesion = request.getSession();
-		UsuarioDAO usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
-		String numero = null;
-		String cedula = null;
-
-		System.out.println("este es el id " + request.getParameter("id"));
-		sesion.setAttribute("accesos", sesion.getAttribute("accesos"));
 		
 
-		if (Integer.parseInt(request.getParameter("id")) == 1) {
-			if (request.getParameter("numero") != null) {
-				numero = request.getParameter("numero");
-				request.setAttribute("telefono", usuarioDao.buscarNumero(numero));
-				request.getRequestDispatcher("/JSPs/Busqueda.jsp").forward(request, response);
-			}
-		}else if (Integer.parseInt(request.getParameter("id")) == 2) {
-			if (request.getParameter("cedula") != null) {
-				cedula = request.getParameter("cedula");
-				request.setAttribute("telefono", telefonoDao.buscarCedula(cedula));
-				request.getRequestDispatcher("/JSPs/Busqueda.jsp").forward(request, response);
-			}
+		if (request.getParameter("id") != null) {
+				request.setAttribute("telefono", telefonoDao.findAll());
+				request.getRequestDispatcher("/JSPs/Listar.jsp").forward(request, response);
 		}
 	}
 

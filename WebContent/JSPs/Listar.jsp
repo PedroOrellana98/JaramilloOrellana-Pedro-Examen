@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Buscar</title>
+<title>Listar</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="/JaramilloOrellana-Pedro-Examen/css/buscar.css" type="text/css">
@@ -19,20 +19,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 	<div id="header">
-		<h1>Buscar</h1>
+		<h1>Listar</h1>
 	</div>
 	<div class="topnav">
 		<a href="index.jsp">Home</a>
-		<form action="/JaramilloOrellana-Pedro-Examen/Buscar?id=1" method="POST">
-			<a><input type="text" class="form-control" name="numero" 
-			placeholder="Buscar numero..."></a>
-			<a><button class="input-group-text" name="buscarCorreo" value="correoB"
-						type="submit">Buscar</button></a>
-		</form>
-		<form action="/JaramilloOrellana-Pedro-Examen/Buscar?id=2" method="POST">	
-			<a><input type="text" class="form-control" name="cedula" 
-			placeholder="Buscar cedula.."></a>		
-			<a><button class="input-group-text" name="buscarCed" value="cedulaB" type="submit">Buscar</button></a>
+		<form action="/JaramilloOrellana-Pedro-Examen/Listar" method="POST">
+			<a><button class="input-group-text" name="id" type="submit">Listar</button></a>
 		</form>
 	</div>
 

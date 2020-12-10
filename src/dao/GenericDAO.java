@@ -22,7 +22,7 @@ public interface GenericDAO<T, ID> {
 
 	List<Telefono> buscarCedula(String cedula);
 
-	List<Usuario> buscarCorreo(String correo);
+	List<Telefono> buscarNumero(String numero);
 	
 	
 }

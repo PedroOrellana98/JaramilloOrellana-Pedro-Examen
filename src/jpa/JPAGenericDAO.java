@@ -104,10 +104,10 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	}
 	
 	@Override
-	public List<Usuario> buscarCorreo(String correo) {
-		Query nativeQuery = em.createNativeQuery("SELECT * FROM usuario, telefono WHERE telefono.Usuario_cedula=Usuario.cedula and usuario.correo= ?", Telefono.class);
-		 nativeQuery.setParameter(1, correo);
-		return (List<Usuario>) nativeQuery.getResultList();
+	public List<Telefono> buscarNumero(String numero) {
+		Query nativeQuery = em.createNativeQuery("SELECT * FROM usuario, telefono WHERE telefono.Usuario_cedula=Usuario.cedula and telefono.numero= ?", Telefono.class);
+		 nativeQuery.setParameter(1, numero);
+		return (List<Telefono>) nativeQuery.getResultList();
 	
 	}
 
