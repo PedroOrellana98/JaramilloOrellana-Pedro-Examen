@@ -18,7 +18,7 @@ import entidad.Usuario;
 @WebServlet("/CrearUsuario")
 public class CrearUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public String cedula;
+	public static String cedula;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -46,7 +46,6 @@ public class CrearUsuario extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html:charset=UTF-8");
 		
-		cedula = null;
 		String nombre = null;
 		String apellido = null;
 		String correo = null;
@@ -62,6 +61,7 @@ public class CrearUsuario extends HttpServlet {
 			correo = request.getParameter("email");
 			pwd = request.getParameter("password");
 			user = new Usuario(cedula, nombre, apellido, correo, pwd);
+			System.out.println("Desde el crear cedula: " + cedula);
 			users.create(user);
 		}
 
